@@ -1145,7 +1145,8 @@ if (analysis == "Image") {
 		preProcessImage(settings[0], settings[1], settings[2]);
 		processImage(muscle);
 	}
-
+	
+	run("Read and Write Excel", "stack_results no_count_column dataset_label=Analysis_results");
 	run("Close All");
 } 
 
@@ -1154,7 +1155,8 @@ else {
 	 
 	processImages(input, settings);
 	}
-
+	
+	run("Read and Write Excel", "stack_results no_count_column dataset_label=Analysis_results");
 	close("ROI Manager");
 	run("Close All");
 }
