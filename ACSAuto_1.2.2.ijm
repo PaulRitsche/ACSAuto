@@ -24,6 +24,7 @@
 
 #@ String (value = "----- ACSAuto - Automatic cross-sectional area analysis -----", visibility="MESSAGE") title
 #@ String (label = "Type of analysis", choices= {"Folder", "Image"}, persist=true, style="radioButtonHorizontal", description="Analyse single image or several images. Medial muscle border needs to be on the (top) left, lateral on the (bottom) right. If not, use flipping.") analysis
+#@ Boolean (label = "Export to excel", value = FALSE, persist = TRUE, description = "Wheter to export results to excel file on desktop. If name not changed, values will be added."
 #@ String (value = "------------------ Folder analysis ------------------", visibility="MESSAGE") text1
 #@ File (label = "Input directory", style = "directory") input
 #@ File (label = "Output directory", style = "directory") output
@@ -162,6 +163,19 @@ function clearDisplay () {
 	close("Junctions");
 	close("Threshold");
 	run("Close");
+}
+
+function excel_expo () {
+
+	*/
+		Export results to excel
+	*/
+	
+	if (excel == TRUE) {
+
+	run("Read and Write Excel", "stack_results no_count_column dataset_label=Analysis_results");
+
+	}
 }
 
 function getlineLength () {
@@ -1146,7 +1160,7 @@ if (analysis == "Image") {
 		processImage(muscle);
 	}
 	
-	run("Read and Write Excel", "stack_results no_count_column dataset_label=Analysis_results");
+	excel_expo();
 	run("Close All");
 } 
 
@@ -1156,7 +1170,7 @@ else {
 	processImages(input, settings);
 	}
 	
-	run("Read and Write Excel", "stack_results no_count_column dataset_label=Analysis_results");
+	excel_expo();
 	close("ROI Manager");
 	run("Close All");
 }
