@@ -588,6 +588,45 @@ function getManualOutlineFinderStartingPoints(muscle) {
 	}
 }
 
+
+function sqDistance(x0, x1, y0, y1) {
+	/*
+		Return the squared distance between (x0, y0) and (x1, y1)
+	*/
+	return (x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0);
+}
+
+function swap(xs, ys, i, j) {
+	/*
+		Swaps the coordinates of xs and ys
+	*/
+	tmp_x = xs[i];
+	tmp_y = ys[i];
+	xs[i] = xs[j];
+	ys[i] = ys[j];
+	xs[j] = tmp_x;
+	ys[j] = tmp_y;
+}
+
+
+function sortCoordinatesClockwise(xs, ys, radius) {
+	/*
+		Sorts the coordinates by finding the closest point ahead.
+	*/
+	for (i = 0; i < xs.length; i++) {
+		squared_distance_to_neighbor = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1])
+		for (j = i+1; j < xs.length - 1; j++) {
+			squared_distance = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1])
+			if (squared_distance < squared_distance_to_neighbor) {
+				swap(xs, ys, i, j);
+				squared_distance_to_neighbor = squared_distance
+			}
+
+		}
+	}
+}
+
+
 function measureRectusArea(nbeams, R, N, thresh) {
 	/*
 		Measures the area of the isolated rectus femoris
