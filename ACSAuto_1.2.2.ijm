@@ -24,10 +24,7 @@
 
 #@ String (value = "----- ACSAuto - Automatic cross-sectional area analysis -----", visibility="MESSAGE") title
 #@ String (label = "Type of analysis", choices= {"Folder", "Image"}, persist=true, style="radioButtonHorizontal", description="Analyse single image or several images. Medial muscle border needs to be on the (top) left, lateral on the (bottom) right. If not, use flipping.") analysis
-<<<<<<< HEAD
 #@ Boolean (label = "Export to excel", value = FALSE, persist = TRUE, description = "Wheter to export results to excel file on desktop. If name not changed, values will be added.") excel
-=======
->>>>>>> ced26dc558d67f4fd62b4a535c278730f2a1d450
 #@ String (value = "------------------ Folder analysis ------------------", visibility="MESSAGE") text1
 #@ File (label = "Input directory", style = "directory") input
 #@ File (label = "Output directory", style = "directory") output
@@ -168,7 +165,7 @@ function clearDisplay () {
 	run("Close");
 }
 
-<<<<<<< HEAD
+
 function excel_expo () {
 
 	/*
@@ -182,8 +179,7 @@ function excel_expo () {
 	}
 }
 
-=======
->>>>>>> ced26dc558d67f4fd62b4a535c278730f2a1d450
+
 function getlineLength () {
 	
 	/* 
@@ -608,8 +604,6 @@ function getManualOutlineFinderStartingPoints(muscle) {
 	}
 }
 
-<<<<<<< HEAD
-=======
 
 function sqDistance(x0, x1, y0, y1) {
 	/*
@@ -628,6 +622,7 @@ function swap(xs, ys, i, j) {
 	ys[i] = ys[j];
 	xs[j] = tmp_x;
 	ys[j] = tmp_y;
+	
 }
 
 
@@ -635,13 +630,14 @@ function sortCoordinatesClockwise(xs, ys, radius) {
 	/*
 		Sorts the coordinates by finding the closest point ahead.
 	*/
-	for (i = 0; i < xs.length; i++) {
-		squared_distance_to_neighbor = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1])
+	for (i = 0; i < xs.length - 1; i++) {
+		squared_distance_to_neighbor = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1]);
 		for (j = i+1; j < xs.length - 1; j++) {
-			squared_distance = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1])
+			squared_distance = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1]);
 			if (squared_distance < squared_distance_to_neighbor) {
 				swap(xs, ys, i, j);
-				squared_distance_to_neighbor = squared_distance
+				squared_distance_to_neighbor = squared_distance;
+								
 			}
 
 		}
@@ -649,7 +645,6 @@ function sortCoordinatesClockwise(xs, ys, radius) {
 }
 
 
->>>>>>> ced26dc558d67f4fd62b4a535c278730f2a1d450
 function measureRectusArea(nbeams, R, N, thresh) {
 	/*
 		Measures the area of the isolated rectus femoris
@@ -702,6 +697,7 @@ function measureVastusLatArea(nbeams, nsteps, R, N, thresh) {
 	
 	real_xs = newArray(count);
 	real_ys = newArray(count);
+
 	for (i = 0; i < count; i++) {
 		real_xs[i] = xs[i];
 		real_ys[i] = ys[i];
@@ -710,9 +706,9 @@ function measureVastusLatArea(nbeams, nsteps, R, N, thresh) {
 	//switch to raw image
 	selectImage(IDFoV); close();
 	selectImage(IDraw);
-
+	
 	upscaleAndLocalSearch(real_xs, real_ys, 32);
-
+	
 	// make selection and measure
 	makeSelection("polygon", real_xs, real_ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
@@ -892,17 +888,11 @@ function circScanLine(x, y, xs, ys, count, nbeams, R, N, thresh, angle_start, an
 			if (getPixel(xi, yi) > thresh) {
 				xs[count] = xi;
 				ys[count] = yi;  
-<<<<<<< HEAD
-				count ++;
-				j = N;	 
-			}
-		}			
-=======
 				j = N;	 
 			}
 		}
 		count ++;
->>>>>>> ced26dc558d67f4fd62b4a535c278730f2a1d450
+		sortCoordinatesClockwise(xs, ys, r);
 	}
 	
 	return count;
@@ -936,9 +926,11 @@ function verticalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh, s
 				j = N;
 			}
 		}
+		sortCoordinatesClockwise(xs, ys, r);
 	}
 	
 	return count;
+	
 }
 
 function horizontalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh, sign) {
@@ -969,9 +961,11 @@ function horizontalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh,
 				j = N;
 			}
 		}
+		sortCoordinatesClockwise(xs, ys, r);
 	}
 	
 	return count;
+	
 }
 
 function upscaleAndLocalSearch(xs, ys, window_size) {
@@ -1214,12 +1208,8 @@ if (analysis == "Image") {
 		preProcessImage(settings[0], settings[1], settings[2]);
 		processImage(muscle);
 	}
-<<<<<<< HEAD
 	
 	excel_expo();
-=======
-
->>>>>>> ced26dc558d67f4fd62b4a535c278730f2a1d450
 	run("Close All");
 } 
 
@@ -1228,17 +1218,10 @@ else {
 	 
 	processImages(input, settings);
 	}
-<<<<<<< HEAD
 	
 	excel_expo();
 	close("ROI Manager");
 	run("Close All");
 }
  
-=======
 
-	close("ROI Manager");
-	run("Close All");
-}
- 
->>>>>>> ced26dc558d67f4fd62b4a535c278730f2a1d450
