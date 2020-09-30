@@ -869,10 +869,10 @@ function circScanLine(x, y, xs, ys, count, nbeams, R, N, thresh, angle_start, an
 			if (getPixel(xi, yi) > thresh) {
 				xs[count] = xi;
 				ys[count] = yi;  
-				count ++;
 				j = N;	 
 			}
-		}			
+		}
+		count ++;
 	}
 	
 	return count;
