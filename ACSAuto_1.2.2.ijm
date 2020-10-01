@@ -631,12 +631,12 @@ function sortCoordinatesClockwise(xs, ys, radius) {
 		Sorts the coordinates by finding the closest point ahead.
 	*/
 	for (i = 0; i < xs.length - 1; i++) {
-		squared_distance_to_neighbor = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1]);
+		squared_distance_to_neighbor = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1]);
 		for (j = i+1; j < xs.length - 1; j++) {
-			squared_distance = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1]);
+			squared_distance = sqDistance(xs[i], xs[j], ys[i], ys[j]);
 			if (squared_distance < squared_distance_to_neighbor) {
 				swap(xs, ys, i, j);
-				squared_distance_to_neighbor = squared_distance;
+				squared_distance_to_neighbor = squared_distance;
 								
 			}
 
@@ -706,7 +706,8 @@ function measureVastusLatArea(nbeams, nsteps, R, N, thresh) {
 	//switch to raw image
 	selectImage(IDFoV); close();
 	selectImage(IDraw);
-	
+
+	
 	upscaleAndLocalSearch(real_xs, real_ys, 32);
 	
 	// make selection and measure
