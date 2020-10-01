@@ -626,23 +626,23 @@ function swap(xs, ys, i, j) {
 }
 
 
-function sortCoordinatesClockwise(xs, ys, radius) {
-	/*
-		Sorts the coordinates by finding the closest point ahead.
-	*/
-	for (i = 0; i < xs.length - 1; i++) {
-		squared_distance_to_neighbor = sqDistance(xs[i], xs[i+1], ys[0], ys[i+1]);
-		for (j = i+1; j < xs.length - 1; j++) {
-			squared_distance = sqDistance(xs[i], xs[j], ys[i], ys[j]);
-			if (squared_distance < squared_distance_to_neighbor) {
-				swap(xs, ys, i, j);
-				squared_distance_to_neighbor = squared_distance;
-								
-			}
+function sortCoordinatesClockwise(xs, ys) {
+   /*
+		Sorts depending on squared distance
+   */
+   for (i = 0; i < xs.length - 1; i++) {
+      squared_distance_to_neighbor = sqDistance(xs[i], xs[i+1], ys[i], ys[i+1]);
+      for (j = i+1; j < xs.length - 1; j++) {
+         squared_distance = sqDistance(xs[i], xs[j], ys[i], ys[j]);
+         if (squared_distance < squared_distance_to_neighbor) {
+            swap(xs, ys, i, j);
+            squared_distance_to_neighbor = squared_distance;
+         }
+      }
+   }
 
-		}
-	}
 }
+
 
 
 function measureRectusArea(nbeams, R, N, thresh) {
@@ -893,9 +893,9 @@ function circScanLine(x, y, xs, ys, count, nbeams, R, N, thresh, angle_start, an
 			}
 		}
 		count ++;
-		sortCoordinatesClockwise(xs, ys, r);
+		
 	}
-	
+	sortCoordinatesClockwise(xs, ys);
 	return count;
 }
 
@@ -927,9 +927,9 @@ function verticalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh, s
 				j = N;
 			}
 		}
-		sortCoordinatesClockwise(xs, ys, r);
+		
 	}
-	
+	sortCoordinatesClockwise(xs, ys);
 	return count;
 	
 }
@@ -962,9 +962,9 @@ function horizontalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh,
 				j = N;
 			}
 		}
-		sortCoordinatesClockwise(xs, ys, r);
+		
 	}
-	
+	sortCoordinatesClockwise(xs, ys);
 	return count;
 	
 }
