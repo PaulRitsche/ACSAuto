@@ -662,9 +662,10 @@ function measureRectusArea(nbeams, R, N, thresh) {
 	// select raw image and rescale outline
 	selectImage(IDFoV); close();
 	selectImage(IDraw);
-	upscaleAndLocalSearch(xs, ys, 4);
 
-	// measure area
+	// make selection and measure
+	upscaleAndLocalSearch(xs, ys, 4);
+	sortCoordinatesClockwise(xs, ys);
 	makeSelection("polygon", xs, ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
@@ -706,10 +707,9 @@ function measureVastusLatArea(nbeams, nsteps, R, N, thresh) {
 	selectImage(IDFoV); close();
 	selectImage(IDraw);
 
-	
+	// make selection and measure
 	upscaleAndLocalSearch(real_xs, real_ys, 32);
-	
-	// make selection and measure
+	sortCoordinatesClockwise(real_xs, real_ys);
 	makeSelection("polygon", real_xs, real_ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
@@ -737,9 +737,9 @@ function measureQuadRFArea(nbeams, R, N, thresh) {
 	selectImage(IDFoV); close();
 	selectImage(IDraw);
 
-	upscaleAndLocalSearch(xs, ys, 32);
-
 	// make selection and measure
+	upscaleAndLocalSearch(xs, ys, 32);
+	sortCoordinatesClockwise(xs, ys);
 	makeSelection("polygon", xs, ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
@@ -780,8 +780,9 @@ function measureQuadVLArea(nbeams, nsteps, R, N, thresh) {
 	selectImage(IDFoV); close();
 	selectImage(IDraw);
 
+	//make selection and measure
 	upscaleAndLocalSearch(real_xs, real_ys, 32);
-
+	sortCoordinatesClockwise(real_xs, real_ys);
 	makeSelection("polygon", real_xs, real_ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
@@ -836,6 +837,7 @@ function measureQuadricepsArea(nbeams_r, R_r, N_r, thresh_r, nbeams_v, nsteps_v,
 	
 	//measure rectus
 	upscaleAndLocalSearch(rectus_xs, rectus_ys, 32);
+	sortCoordinatesClockwise(rectus_xs, rectus_ys);
 	makeSelection("polygon", rectus_xs, rectus_ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
@@ -846,6 +848,7 @@ function measureQuadricepsArea(nbeams_r, R_r, N_r, thresh_r, nbeams_v, nsteps_v,
 
 	//measure vastus
 	upscaleAndLocalSearch(real_xs, real_ys, 32);
+	sortCoordinatesClockwise(real_xs, real_ys);
 	makeSelection("polygon", real_xs, real_ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
@@ -894,7 +897,6 @@ function circScanLine(x, y, xs, ys, count, nbeams, R, N, thresh, angle_start, an
 		count ++;
 		
 	}
-	sortCoordinatesClockwise(xs, ys);
 	return count;
 }
 
@@ -928,7 +930,6 @@ function verticalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh, s
 		}
 		
 	}
-	sortCoordinatesClockwise(xs, ys);
 	return count;
 	
 }
@@ -963,7 +964,6 @@ function horizontalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh,
 		}
 		
 	}
-	sortCoordinatesClockwise(xs, ys);
 	return count;
 	
 }
