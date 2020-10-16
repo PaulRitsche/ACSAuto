@@ -635,7 +635,7 @@ function sortCoordinatesClockwise(xs, ys) {
       for (j = i+1; j < xs.length - 1; j++) {
          squared_distance = sqDistance(xs[i], xs[j] , ys[i], ys[j]);
          if (squared_distance < squared_distance_to_neighbor) {
-            swap(xs, ys, i, j);
+            swap(xs, ys, i+1, j);
             squared_distance_to_neighbor = squared_distance;
          }
       }
@@ -665,8 +665,7 @@ function measureRectusArea(nbeams, R, N, thresh) {
 
 	// make selection and measure
 	upscaleAndLocalSearch(xs, ys, 4);
-	sortCoordinatesClockwise(xs, ys);
-	makeSelection("polygon", xs, ys);
+	makeSelection("polygon", xs, ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
 	roiManager("add");
@@ -739,8 +738,7 @@ function measureQuadRFArea(nbeams, R, N, thresh) {
 
 	// make selection and measure
 	upscaleAndLocalSearch(xs, ys, 32);
-	sortCoordinatesClockwise(xs, ys);
-	makeSelection("polygon", xs, ys);
+	makeSelection("polygon", xs, ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
 	roiManager("add");
@@ -837,7 +835,6 @@ function measureQuadricepsArea(nbeams_r, R_r, N_r, thresh_r, nbeams_v, nsteps_v,
 	
 	//measure rectus
 	upscaleAndLocalSearch(rectus_xs, rectus_ys, 32);
-	sortCoordinatesClockwise(rectus_xs, rectus_ys);
 	makeSelection("polygon", rectus_xs, rectus_ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
