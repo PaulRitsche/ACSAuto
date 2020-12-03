@@ -1,8 +1,8 @@
-///////////////////////////////////////////////////////////
-//// ACSAA - Anatomical Cross-Sectional Area Analysis ////
-//////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+//// ACSAuto - Anatomical Cross-Sectional Area Analysis ////
+///////////////////////////////////////////////////////////
 
-//  ACSAA - Analysis of anatomical cross-sectional area of muscles
+//  ACSAuto - Analysis of anatomical cross-sectional area of muscles
 //  Copyright (C), 2020, Paul Ritsche & Philipp Wirth 
 
 //  This Macro Requires:
@@ -16,7 +16,7 @@
 
 //	This program is distributed in the hope that it will be useful,
 //	but WITHOUT ANY WARRANTY; without even the implied warranty of
-//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 //	GNU General Public License for more details.
 
 //	You should have received a copy of the GNU General Public License
