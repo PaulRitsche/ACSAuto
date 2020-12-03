@@ -15,7 +15,7 @@ There are two ways how to install ACSAuto as a plugin in FIJI:
 git clone https://github.com/PaulRitsche/ACSAuto
 ```
 Once you have downloaded the ACSAuto .ijm file on your lokal server, you need to open FIJI. Then you need to install the ACSAuto script as a plugin. Choose 'Plugins' -> 'Install' -> select the .ijm file you wish to install (ACSAuto.ijm) -> 'open'. 
-Restart FIJI and the ACSAuto file will appear at the bootom of the FIJI plugin list and is ready to use.
+Restart FIJI and the ACSAuto plugin will appear at the bootom of the FIJI plugin list and is ready to use.
  
 2. Use ImageJ update sites (updates will be automatically installed):
 
@@ -29,7 +29,7 @@ URL: http://sites.imagej.net/ACSAuto/
 Host: webdav:PRitsche
 ```
 After entering the details, ensure ticking the box left of ACSAuto. Choose 'Close' -> 'Apply changes'. Now you have to close and re-open FIJI in order for the newly added plugins to be installed. 
-The ACSAuto file will appear at the bottom of the FIJI plugin list and is ready to use. 
+The ACSAuto plugin will appear at the bottom of the FIJI plugin list and is ready to use. 
 
 ## Usage
 
