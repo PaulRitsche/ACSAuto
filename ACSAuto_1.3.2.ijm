@@ -1,6 +1,6 @@
-////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
 //// ACSAuto - Anatomical Cross-Sectional Area Analysis ////
-///////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 //  ACSAuto - Analysis of anatomical cross-sectional area of muscles
 //  Copyright (C), 2020, Paul Ritsche & Philipp Wirth 
@@ -639,7 +639,8 @@ function sortCoordinatesClockwise(xs, ys) {
       	}
    	}
 }
-
+
+
 function measureRectusArea(nbeams, R, N, thresh) {
 	/*
 		Measures the area of the isolated rectus femoris
@@ -661,7 +662,8 @@ function measureRectusArea(nbeams, R, N, thresh) {
 
 	// make selection and measure
 	upscaleAndLocalSearch(xs, ys, 4);
-	makeSelection("polygon", xs, ys);
+
+	makeSelection("polygon", xs, ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	waitForUser("Adjust Region of Interest. Click OK when done");
 	roiManager("add");
@@ -702,7 +704,8 @@ function measureVastusLatArea(nbeams, nsteps, R, N, thresh) {
 	selectImage(IDFoV); close();
 	selectImage(IDraw);
 
-	// make selection and measure
+	
+// make selection and measure
 	upscaleAndLocalSearch(real_xs, real_ys, 32);
 	if (sorting == true){
 		sortCoordinatesClockwise(real_xs, real_ys);
@@ -736,7 +739,8 @@ function measureQuadRFArea(nbeams, R, N, thresh) {
 
 	// make selection and measure
 	upscaleAndLocalSearch(xs, ys, 32);
-	makeSelection("polygon", xs, ys);
+
+	makeSelection("polygon", xs, ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
 	run("To Selection");
 	run("Out [-]");
@@ -781,7 +785,8 @@ function measureQuadVLArea(nbeams, nsteps, R, N, thresh) {
 	//make selection and measure
 	upscaleAndLocalSearch(real_xs, real_ys, 32);
 	if (sorting == true){
-		sortCoordinatesClockwise(real_xs, real_ys);
+
+		sortCoordinatesClockwise(real_xs, real_ys);
 	}
 	makeSelection("polygon", real_xs, real_ys);
 	run("Set Scale...", "distance=lineLength known=1 pixel=1 unit=cm"); 
@@ -860,7 +865,8 @@ function measureQuadricepsArea(nbeams_r, R_r, N_r, thresh_r, nbeams_v, nsteps_v,
 	roiManager("add");
 	roiManager("measure");
 	roiManager("delete");
-	Overlay.addSelection("red", 4);
+	Overlay.addSelection("red", 4);
+
 }
 
 function circScanLine(x, y, xs, ys, count, nbeams, R, N, thresh, angle_start, angle_end) {
@@ -934,7 +940,8 @@ function verticalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh, s
 		}
 		
 	}
-	return count;	
+	return count;
+	
 }
 
 function horizontalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh, sign) {
@@ -967,7 +974,8 @@ function horizontalScanLine(x0, y0, x1, y1, xs, ys, count, nsteps, R, N, thresh,
 		}
 		
 	}
-	return count;	
+	return count;
+	
 }
 
 function upscaleAndLocalSearch(xs, ys, window_size) {
@@ -1223,4 +1231,4 @@ else {
 	close("ROI Manager");
 	run("Close All");
 }
- 
+ 
