@@ -14,13 +14,13 @@ There are two ways how to install ACSAuto as a plugin in FIJI:
 ```sh
 git clone https://github.com/PaulRitsche/ACSAuto
 ```
-Once you have downloaded the ACSAuto .ijm file on your lokal server, you need to open FIJI. Then you need to install the ACSAuto script as a plugin. Choose 'Plugins' -> 'Install' -> select the .ijm file you wish to install (ACSAuto.ijm) -> 'open'. 
+Once you have downloaded the ACSAuto .ijm file on your lokal server, you need to open FIJI. Then you need to install the ACSAuto script as a plugin. Choose 'Plugins' -> 'Install' -> select the ACSAuto.ijm and Canny_Edge_Detector.class files -> 'open'. 
 Restart FIJI and the ACSAuto plugin will appear at the bootom of the FIJI plugin list and is ready to use.
  
 2. Use ImageJ update sites (updates will be automatically installed):
 
 Subsequently to downloading FIJI, you need to add the update site of the ACSAuto script as well as the sites of the depencies. 
-Open FIJI and choose 'Help' -> 'Update' -> 'Manage update sites'. Now tick the boxes of the 'BIG-EPFL', 'Biomedgroup', 'ResultsToExcel' and 'UCB Vision Sciences' update sites. 
+Open FIJI and choose 'Help' -> 'Update' -> 'Manage update sites'. Now tick the boxes of the 'BIG-EPFL', 'Biomedgroup' and 'ResultsToExcel' update sites. 
 In doing so, dependencies and update releases will be automatically installed. Scroll to the bottom of the list and click 'Add update site'. A new update site should have been added. 
 Modify the details of the new sites with double click: 
 ```sh
