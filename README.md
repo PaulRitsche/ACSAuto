@@ -26,7 +26,6 @@ Modify the details of the new sites with double click:
 ```sh
 Name: ACSAuto
 URL: http://sites.imagej.net/ACSAuto/
-Host: webdav:PRitsche
 ```
 After entering the details, ensure ticking the box left of ACSAuto. Choose 'Close' -> 'Apply changes'. Now you have to close and re-open FIJI in order for the newly added plugins to be installed. 
 The ACSAuto plugin will appear at the bottom of the FIJI plugin list and is ready to use. 
