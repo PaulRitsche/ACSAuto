@@ -2,7 +2,8 @@
 
 This is an ImageJ macro script to semi-automatically evaluate the anatomical cross-sectional area of ultrasound images. 
 
-We refer to the pre-print publication for detailled information about the processing operations: 
+We refer to our paper for detailled information about the processing operations: 
+www.nature.com/articles/s41598-021-92387-6
 
 
 ## Installation
